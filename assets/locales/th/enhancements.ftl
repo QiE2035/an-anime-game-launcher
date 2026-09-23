@@ -51,6 +51,12 @@ icon = ไอคอน
 title = หัวข้อ
 description = คำอธิบาย
 
+touch-support = รองรับการสัมผัส
+touch-support-description = สลับเกมไปยังอินเทอร์เฟซมือถือดั้งเดิม (โหมดป้อนข้อมูลแบบสัมผัส) ด้วยตัวฉีด Hk4eTouch
+touch-support-wayland-unavailable = การรองรับการสัมผัสยังไม่เข้ากันได้กับไดรเวอร์ Winewayland ปิด Winewayland เพื่อใช้งาน
+touch-folder = โฟลเดอร์ Hk4eTouch
+touch-not-installed = ไม่พบไฟล์ Hk4eTouch
+
 fps-unlocker = FPS Unlocker
 fps-unlocker-description = ลบข้อจำกัด FPS โดยการปรับเปลี่ยนหน่วยความจำของเกม สามารถตรวจจับได้โดยระบบการป้องกันโกงของเกม
 

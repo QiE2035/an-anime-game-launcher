@@ -51,6 +51,12 @@ icon = Іконка
 title = Заголовок
 description = Опис
 
+touch-support = Підтримка дотику
+touch-support-description = Перемкнути гру на її рідний мобільний інтерфейс (режим сенсорного введення) за допомогою інжектора Hk4eTouch
+touch-support-wayland-unavailable = Підтримка дотику поки несумісна з драйвером Winewayland. Вимкніть Winewayland, щоб скористатися нею
+touch-folder = Тека Hk4eTouch
+touch-not-installed = Файли Hk4eTouch не знайдено
+
 fps-unlocker = FPS Unlocker
 fps-unlocker-description = Змінити обмеження кадрів в грі шляхом модифікування пам'яті гри. Може бути виявлено античитом гри
 

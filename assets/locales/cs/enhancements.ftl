@@ -51,6 +51,12 @@ icon = Ikona
 title = Titulek
 description = Popis
 
+touch-support = Podpora dotykového ovládání
+touch-support-description = Přepnout hru na její nativní mobilní rozhraní (režim dotykového vstupu) pomocí injektoru Hk4eTouch
+touch-support-wayland-unavailable = Podpora dotykového ovládání zatím není kompatibilní s ovladačem Winewayland. Chcete-li ji použít, vypněte Winewayland
+touch-folder = Složka Hk4eTouch
+touch-not-installed = Soubory Hk4eTouch nenalezeny
+
 fps-unlocker = FPS Odemykač
 fps-unlocker-description = Odstraní limit FPS pomocí úpravy paměti hry. Může být detekováno anti-cheatem
 

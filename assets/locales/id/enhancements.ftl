@@ -51,6 +51,12 @@ icon = Icon untuk Discord RPC
 title = Judul
 description = Deskripsi
 
+touch-support = Dukungan sentuh
+touch-support-description = Beralih ke antarmuka seluler bawaan game (mode input sentuh) menggunakan injektor Hk4eTouch
+touch-support-wayland-unavailable = Dukungan sentuh belum kompatibel dengan driver Winewayland. Nonaktifkan Winewayland untuk menggunakannya
+touch-folder = Folder Hk4eTouch
+touch-not-installed = Berkas Hk4eTouch tidak ditemukan
+
 fps-unlocker = FPS Unlocker
 fps-unlocker-description = Meniadakan batas maksimum frame yang dapat dirender oleh game dengan memodifikasi memori game. Dapat terdeteksi oleh anti-cheat
 

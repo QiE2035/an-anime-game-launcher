@@ -51,6 +51,12 @@ icon = Ikon
 title = Title
 description = Description
 
+touch-support = Érintés támogatás
+touch-support-description = A játék átváltása a natív mobil felületére (érintéses beviteli mód) a Hk4eTouch injektor segítségével
+touch-support-wayland-unavailable = Az érintés támogatás egyelőre nem kompatibilis a Winewayland illesztőprogrammal. A használatához kapcsold ki a Winewaylandet
+touch-folder = Hk4eTouch mappa
+touch-not-installed = A Hk4eTouch fájljai nem találhatók
+
 fps-unlocker = FPS Unlocker
 fps-unlocker-description = Eltávolítja az fps limitet. Az anti-cheat észreveheti
 

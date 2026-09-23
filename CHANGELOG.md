@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added a touch support toggle that starts the Hk4eTouch injector to switch the game to its mobile UI
+- Added an editable Hk4eTouch folder setting to the enhancements page
+
 ## [3.19.8] - 2026-09-11
 
 ### Added

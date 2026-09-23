@@ -51,6 +51,12 @@ icon = Ikon
 title = Titel
 description = Beskrivning
 
+touch-support = Pekstöd
+touch-support-description = Växla spelet till sitt inbyggda mobila gränssnitt (pekinmatningsläge) med Hk4eTouch-injektorn
+touch-support-wayland-unavailable = Pekstöd är ännu inte kompatibelt med Winewayland-drivrutinen. Inaktivera Winewayland för att använda det
+touch-folder = Hk4eTouch-mapp
+touch-not-installed = Hk4eTouch-filerna hittades inte
+
 fps-unlocker = FPS-upplåsare
 fps-unlocker-description = Ta bort begränsningen för rendering av bildrutor genom att modifiera spelets minne. Kan upptäckas av anti-cheat
 

@@ -51,6 +51,12 @@ icon = İkon
 title = Başlık
 description = Açıklama
 
+touch-support = Dokunmatik desteği
+touch-support-description = Oyunu Hk4eTouch enjektörünü kullanarak kendi mobil arayüzüne (dokunmatik giriş modu) geçir
+touch-support-wayland-unavailable = Dokunmatik desteği henüz Winewayland sürücüsüyle uyumlu değil. Kullanmak için Winewayland'i kapatın
+touch-folder = Hk4eTouch klasörü
+touch-not-installed = Hk4eTouch dosyaları bulunamadı
+
 fps-unlocker = FPS Kilidi kaldırma
 fps-unlocker-description = Oyundaki FPS limitini kaldırır, ancak anti-hile sistemleri tarafından hile olarak algılanabilir
 

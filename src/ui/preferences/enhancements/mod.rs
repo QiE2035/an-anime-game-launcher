@@ -1,3 +1,5 @@
+use std::path::PathBuf;
+
 use relm4::prelude::*;
 use adw::prelude::*;
 
@@ -27,7 +29,10 @@ pub struct EnhancementsApp {
     game_page: AsyncController<GamePage>,
     sandbox_page: AsyncController<SandboxPage>,
     environment_page: AsyncController<EnvironmentPage>,
-    timeout_fix: bool
+    timeout_fix: bool,
+
+    touch_row: adw::ActionRow,
+    touch_folder: PathBuf
 }
 
 #[derive(Debug)]
@@ -40,10 +45,33 @@ pub enum EnhancementsAppMsg {
     OpenEnvironmentSettingsPage,
 
     SetTimeoutFix(bool),
+    ChooseTouchFolder,
+    UpdateTouchSensitivity,
 
     Toast {
         title: String,
         description: Option<String>
+    }
+}
+
+impl EnhancementsApp {
+    /// Touch support requires the Hk4eTouch binaries and is not compatible
+    /// with the Winewayland driver yet
+    ///
+    /// Returns whether the settings should be sensitive, and the tooltip
+    /// explaining why they're not
+    fn touch_availability() -> (bool, Option<String>) {
+        let winewayland = Config::get()
+            .map(|config| config.game.wine.winewayland)
+            .unwrap_or(CONFIG.game.wine.winewayland);
+
+        if winewayland {
+            (false, Some(tr!("touch-support-wayland-unavailable")))
+        }
+
+        else {
+            (true, None)
+        }
     }
 }
 
@@ -195,13 +223,16 @@ impl SimpleAsyncComponent for EnhancementsApp {
 
                         set_active: CONFIG.game.wine.winewayland,
 
-                        connect_state_notify => |switch| {
+                        connect_state_notify[sender] => move |switch| {
                             if is_ready() {
                                 if let Ok(mut config) = Config::get() {
                                     config.game.wine.winewayland = switch.is_active();
 
                                     Config::update(config);
                                 }
+
+                                // Touch support availability depends on this setting
+                                sender.input(EnhancementsAppMsg::UpdateTouchSensitivity);
                             }
                         }
                     }
@@ -469,6 +500,58 @@ impl SimpleAsyncComponent for EnhancementsApp {
             },
 
             add = &adw::PreferencesGroup {
+                set_title: &tr!("touch-support"),
+
+                #[name = "touch_row"]
+                adw::ActionRow {
+                    set_title: &tr!("enabled"),
+                    set_subtitle: &tr!("touch-support-description"),
+
+                    add_suffix = &gtk::Switch {
+                        set_valign: gtk::Align::Center,
+
+                        set_active: CONFIG.game.enhancements.touch.enabled,
+
+                        connect_state_notify[sender] => move |switch| {
+                            if is_ready() {
+                                if let Ok(mut config) = Config::get() {
+                                    config.game.enhancements.touch.enabled = switch.is_active();
+
+                                    let missing = switch.is_active()
+                                        && !config.game.enhancements.touch.is_installed();
+
+                                    let path = config.game.enhancements.touch.path.to_string_lossy().into_owned();
+
+                                    Config::update(config);
+
+                                    if missing {
+                                        sender.input(EnhancementsAppMsg::Toast {
+                                            title: tr!("touch-not-installed"),
+                                            description: Some(path)
+                                        });
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+
+                adw::ActionRow {
+                    set_title: &tr!("touch-folder"),
+                    set_activatable: true,
+
+                    #[watch]
+                    set_subtitle: model.touch_folder.to_str().unwrap(),
+
+                    connect_activated => EnhancementsAppMsg::ChooseTouchFolder,
+
+                    add_prefix = &gtk::Image {
+                        set_icon_name: Some("folder-symbolic")
+                    }
+                }
+            },
+
+            add = &adw::PreferencesGroup {
                 set_title: &tr!("fps-unlocker"),
 
                 adw::ComboRow {
@@ -567,7 +650,7 @@ impl SimpleAsyncComponent for EnhancementsApp {
     ) -> AsyncComponentParts<Self> {
         tracing::info!("Initializing enhancements settings");
 
-        let model = Self {
+        let mut model = Self {
             gamescope: GamescopeApp::builder()
                 .launch(())
                 .detach(),
@@ -584,7 +667,10 @@ impl SimpleAsyncComponent for EnhancementsApp {
                 .launch(())
                 .forward(sender.input_sender(), std::convert::identity),
 
-            timeout_fix: CONFIG.game.wine.timeout_fix
+            timeout_fix: CONFIG.game.wine.timeout_fix,
+
+            touch_row: adw::ActionRow::new(),
+            touch_folder: CONFIG.game.enhancements.touch.path.clone()
         };
 
         let game_page = model.game_page.widget();
@@ -596,6 +682,13 @@ impl SimpleAsyncComponent for EnhancementsApp {
         if !is_wayland_available() {
             widgets.winewayland_row.set_tooltip_text(Some(&tr!("winewayland-unavailable-tooltip")));
         }
+
+        model.touch_row = widgets.touch_row.clone();
+
+        let (touch_available, touch_tooltip) = Self::touch_availability();
+
+        model.touch_row.set_sensitive(touch_available);
+        model.touch_row.set_tooltip_text(touch_tooltip.as_deref());
 
         AsyncComponentParts { model, widgets }
     }
@@ -642,6 +735,28 @@ impl SimpleAsyncComponent for EnhancementsApp {
 
             EnhancementsAppMsg::SetTimeoutFix(value) => {
                 self.timeout_fix = value;
+            }
+
+            EnhancementsAppMsg::ChooseTouchFolder => {
+                if let Some(folder) = rfd::AsyncFileDialog::new()
+                    .set_directory(&self.touch_folder)
+                    .pick_folder().await
+                {
+                    self.touch_folder = folder.path().to_path_buf();
+
+                    if let Ok(mut config) = Config::get() {
+                        config.game.enhancements.touch.path = self.touch_folder.clone();
+
+                        Config::update(config);
+                    }
+                }
+            }
+
+            EnhancementsAppMsg::UpdateTouchSensitivity => {
+                let (touch_available, touch_tooltip) = Self::touch_availability();
+
+                self.touch_row.set_sensitive(touch_available);
+                self.touch_row.set_tooltip_text(touch_tooltip.as_deref());
             }
 
             EnhancementsAppMsg::Toast { title, description } => {

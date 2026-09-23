@@ -51,6 +51,12 @@ icon = 图标
 title = 标题
 description = 描述
 
+touch-support = 触控支持
+touch-support-description = 使用 Hk4eTouch 注入器将游戏切换到原生移动端界面（触屏输入模式）
+touch-support-wayland-unavailable = 触控支持暂时与 Winewayland 驱动不兼容。请关闭 Winewayland 后再使用
+touch-folder = 触控文件夹
+touch-not-installed = 未找到 Hk4eTouch 程序文件
+
 fps-unlocker = 解除帧率限制
 fps-unlocker-description = 修改游戏内存，解除渲染帧率限制。可能会触发反作弊检查
 

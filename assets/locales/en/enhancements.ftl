@@ -51,6 +51,12 @@ icon = Icon
 title = Title
 description = Description
 
+touch-support = Touch support
+touch-support-description = Switch the game to its native mobile UI (touch input mode) using the Hk4eTouch injector
+touch-support-wayland-unavailable = Touch support is not compatible with the Winewayland driver yet. Disable Winewayland to use it
+touch-folder = Touch folder
+touch-not-installed = Hk4eTouch binaries not found
+
 fps-unlocker = FPS Unlocker
 fps-unlocker-description = Remove frames rendering limitation by modifying the game's memory. Can be detected by the anti-cheat
 

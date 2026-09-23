@@ -50,6 +50,12 @@ icon = Discord RPC用のアイコン
 title = タイトル
 description = 説明
 
+touch-support = タッチ対応
+touch-support-description = Hk4eTouch インジェクターを使ってゲームをネイティブのモバイル UI（タッチ入力モード）に切り替えます
+touch-support-wayland-unavailable = タッチ対応は現在 Winewayland ドライバーと互換性がありません。使用するには Winewayland を無効にしてください
+touch-folder = Hk4eTouch フォルダー
+touch-not-installed = Hk4eTouch のファイルが見つかりません
+
 fps-unlocker = FPS上限解除
 fps-unlocker-description = ゲーム内のメモリを書き換えてFPSの上限を解除します。アンチチートによって検知される可能性があります。
 

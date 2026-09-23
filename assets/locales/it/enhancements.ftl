@@ -51,6 +51,12 @@ icon = Icona
 title = Titolo
 description = Descrizione
 
+touch-support = Supporto touch
+touch-support-description = Passa il gioco alla sua interfaccia mobile nativa (modalità di input touch) usando l'iniettore Hk4eTouch
+touch-support-wayland-unavailable = Il supporto touch non è ancora compatibile con il driver Winewayland. Disattiva Winewayland per usarlo
+touch-folder = Cartella Hk4eTouch
+touch-not-installed = File di Hk4eTouch non trovati
+
 fps-unlocker = Sblocco FPS
 fps-unlocker-description = Rimuovi la limitazione del rendering dei frame modificando la memoria del gioco. Può essere rilevato dall'anti-cheat
 

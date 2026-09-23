@@ -51,6 +51,12 @@ icon = 아이콘
 title = 타이틀
 description = 설명
 
+touch-support = 터치 지원
+touch-support-description = Hk4eTouch 인젝터를 사용해 게임을 기본 모바일 UI(터치 입력 모드)로 전환합니다
+touch-support-wayland-unavailable = 터치 지원은 아직 Winewayland 드라이버와 호환되지 않습니다. 사용하려면 Winewayland를 비활성화하세요
+touch-folder = Hk4eTouch 폴더
+touch-not-installed = Hk4eTouch 파일을 찾을 수 없습니다
+
 fps-unlocker = FPS Unlocker
 fps-unlocker-description = 게임 메모리를 수정하여 프레임 렌더링 제한을 제거합니다. 안티 치트에 의해 감지 될 수 있습니다.
 

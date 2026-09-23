@@ -51,6 +51,12 @@ icon = Icoon
 title = Titel
 description = Omschrijving
 
+touch-support = Aanraakondersteuning
+touch-support-description = Schakel het spel om naar de eigen mobiele interface (aanraakinvoermodus) met de Hk4eTouch-injector
+touch-support-wayland-unavailable = Aanraakondersteuning is nog niet compatibel met het Winewayland-stuurprogramma. Schakel Winewayland uit om het te gebruiken
+touch-folder = Hk4eTouch-map
+touch-not-installed = Hk4eTouch-bestanden niet gevonden
+
 fps-unlocker = FPS Unlocker
 fps-unlocker-description = Haalt het FPS limit weg van het spel door het geheugen aan te passen. Kan gedetecteerd worden door ant-cheat
 

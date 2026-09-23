@@ -51,6 +51,12 @@ icon = Icône
 title = Titre
 description = Description
 
+touch-support = Prise en charge tactile
+touch-support-description = Basculer le jeu vers son interface mobile native (mode de saisie tactile) à l'aide de l'injecteur Hk4eTouch
+touch-support-wayland-unavailable = La prise en charge tactile n'est pas encore compatible avec le pilote Winewayland. Désactivez Winewayland pour l'utiliser
+touch-folder = Dossier Hk4eTouch
+touch-not-installed = Fichiers Hk4eTouch introuvables
+
 fps-unlocker = Déblocage des FPS
 fps-unlocker-description = Enlève les limitations de FPS en modifiant la mémoire du jeu. Peut être détecté par l'anticheat
 
